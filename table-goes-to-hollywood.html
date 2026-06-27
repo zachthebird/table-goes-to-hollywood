@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="Table Goes to Hollywood" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
 <!-- Social preview. table-goes-to-hollywood-og.png lives at the repo root. -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Table Goes to Hollywood" />
@@ -36,6 +36,12 @@
     --wood:#a9783f; --wood-dark:#5c3c1c; --ink:#241405; --gold:#ffd25a;
     /* heavy condensed display look via system fonts (no trademarked typefaces) */
     --disp:'Arial Narrow','Helvetica Neue Condensed',Haettenschweiler,Impact,'Franklin Gothic Bold',sans-serif;
+    /* Golden Hour Strip — sunset title-screen palette + Anton display (open-licensed, no trademarked typeface) */
+    --title-disp:'Anton','Impact','Arial Narrow',Haettenschweiler,sans-serif;
+    --title-accent:'Oswald','Arial Narrow',sans-serif;
+    --sun-sun:#FFD23F; --sun-tangerine:#FF8E2B; --sun-coral:#F4511E;
+    --sun-magenta:#C2185B; --sun-violet:#6A1B9A; --sun-dusk:#2E1A47;
+    --sun-ink:#120A20; --sun-cream:#FFF6E2; --sun-mint:#7FE7C4;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{width:100%; height:100%; overflow:hidden; background:#0a0a0c; font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif; color:#fff;}
@@ -169,20 +175,24 @@
   .logo{font-family:var(--disp); font-size:min(14vw,108px); font-weight:900; letter-spacing:3px; line-height:.9;
     text-transform:uppercase; color:var(--gold); text-shadow:0 4px 0 #7a4a12, 0 10px 24px rgba(0,0,0,.6); }
   .logo .sub{display:block; font-family:var(--disp); font-size:min(5vw,34px); color:#ff7a4a; letter-spacing:7px; margin-top:6px;}
-  /* intro title: condensed "TABLE GOES TO" over gothic "Hollywood" */
-  .titlelogo{display:flex; flex-direction:column; align-items:center; line-height:1;}
-  .t-goes{font-family:var(--disp); font-weight:900; letter-spacing:5px; text-transform:uppercase;
-    font-size:min(6.5vw,50px); color:var(--gold); text-shadow:0 3px 0 #7a4a12, 0 8px 18px rgba(0,0,0,.55);}
-  .t-holly{font-family:'UnifrakturCook','Old English Text MT','UnifrakturMaguntia',serif; font-weight:700;
-    text-transform:none; letter-spacing:2px; line-height:.9; margin-top:-2px;
-    font-size:min(16vw,116px); color:var(--gold); text-shadow:0 5px 0 #7a4a12, 0 12px 24px rgba(0,0,0,.6);}
+  /* intro title: bold condensed "TABLE GOES TO" + outlined "HOLLYWOOD" (Golden Hour Strip) */
+  .titlelogo{display:flex; flex-direction:column; align-items:center; line-height:.82; margin:0; transform:skewX(-5deg);}
+  .t-goes{font-family:var(--title-disp); font-weight:400; letter-spacing:1.5px; text-transform:uppercase;
+    font-size:min(5.5vw,46px); color:var(--sun-sun); -webkit-text-stroke:3px var(--sun-ink); paint-order:stroke fill;
+    text-shadow:0 3px 0 var(--sun-coral), 0 5px 0 var(--sun-ink), 0 8px 14px rgba(18,10,32,.5);}
+  .t-holly{font-family:var(--title-disp); font-weight:400; text-transform:uppercase; letter-spacing:1px; line-height:.9; margin-top:0;
+    font-size:min(14vw,120px); color:var(--sun-cream); -webkit-text-stroke:5px var(--sun-ink); paint-order:stroke fill;
+    text-shadow:0 2px 0 #FFE9B8, 0 4px 0 var(--sun-sun), 0 7px 0 var(--sun-tangerine), 0 10px 0 var(--sun-coral), 0 13px 0 var(--sun-magenta), 0 16px 0 var(--sun-ink), 0 24px 30px rgba(18,10,32,.55);}
   .tag{margin-top:14px; font-size:min(3.6vw,18px); color:#e9d3b0; max-width:640px;}
-  .card{margin-top:22px; background:rgba(0,0,0,.4); border:2px solid rgba(255,210,90,.4); border-radius:14px;
-    padding:18px 24px; max-width:680px;}
-  .card h3{color:#ffd25a; letter-spacing:2px; font-size:14px; margin-bottom:10px;}
-  .keys{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 26px; text-align:left; font-size:14px; color:#fff;}
-  .keys kbd{display:inline-block; min-width:20px; padding:2px 7px; margin-right:6px; border-radius:5px;
-    background:#1c1408; border:1px solid #ffd25a; color:#ffd25a; font-size:12px; font-family:inherit;}
+  .card{margin-top:0; background:linear-gradient(180deg, rgba(14,20,25,.82), rgba(20,12,32,.86));
+    border:1px solid rgba(127,231,196,.34); border-radius:14px; padding:16px 26px; max-width:680px;
+    box-shadow:0 10px 30px rgba(18,10,32,.5), inset 0 1px 0 rgba(255,255,255,.05);}
+  .card h3{font-family:var(--title-disp); color:var(--sun-mint); letter-spacing:3px; font-size:20px; margin-bottom:10px;}
+  .keys{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px 26px; text-align:left;
+    font-family:var(--title-accent); font-weight:500; font-size:14px; color:#D9DED6;}
+  .keys kbd{display:inline-block; min-width:20px; padding:2px 7px; margin-right:6px; border-radius:6px;
+    background:#0E1419; border:1px solid var(--sun-mint); border-bottom-width:3px; color:var(--sun-mint);
+    font-family:var(--title-accent); font-weight:700; font-size:12.5px;}
   .btn{margin-top:26px; cursor:pointer; pointer-events:auto; font-weight:900; letter-spacing:2px;
     font-size:20px; color:#241405; background:linear-gradient(180deg,#ffe48a,#ffba3a);
     border:none; border-radius:12px; padding:16px 34px; box-shadow:0 6px 0 #9a6a16, 0 10px 22px rgba(0,0,0,.5);
@@ -193,6 +203,45 @@
     color:#ffe9c0; background:linear-gradient(180deg,#5a4a78,#3a2c54); box-shadow:0 5px 0 #241634, 0 8px 18px rgba(0,0,0,.5);}
   .btn2:active{box-shadow:0 2px 0 #241634;}
   .small{margin-top:16px; font-size:12px; color:#b69a72;}
+
+  /* ===== Golden Hour Strip — sunset theme scoped to the title screen only ===== */
+  #titleScreen{ overflow-y:auto; justify-content:safe center; gap:16px; color:var(--sun-cream); font-family:var(--title-accent);
+    background:linear-gradient(180deg, #1B0E33 0%, #2E1A47 12%, #4A1A6E 26%, #6A1B9A 40%, #A81E73 54%, #C2185B 64%, #F4511E 78%, #FF8E2B 89%, #FFD23F 100%); }
+  #titleScreen::before{ content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(circle at 50% 40%, #FFE680 0%, #FFD23F 11%, #FF8E2B 26%, rgba(244,81,30,.5) 46%, rgba(46,26,71,0) 70%),
+      repeating-conic-gradient(from 0deg at 50% 40%, rgba(255,210,63,.14) 0deg 6deg, rgba(255,210,63,0) 6deg 12deg);
+    -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 0%, #000 40%, transparent 72%);
+            mask-image:radial-gradient(circle at 50% 40%, #000 0%, #000 40%, transparent 72%); }
+  #titleScreen::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:30%; pointer-events:none; z-index:1;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='220' viewBox='0 0 1280 220' preserveAspectRatio='xMidYMax meet'><g fill='%23160A28'><path d='M0 220h1280v-46c-150 8-260 22-360 22-150 0-260-30-470-30-180 0-300 26-450 26z'/></g><g fill='%231C0E30'><path d='M120 220c-2-34-3-58-4-78-5 2-13 5-23 11 7-9 15-14 22-16-.3-4-.6-8-.9-11-9-2-19-.4-31 5 9-8 19-11 29-11-5-9-14-16-29-20 15 .3 25 5 31 13-1-10 1-20 7-29-2 11-1 20 1 29 7-8 17-12 32-13-14 4-22 11-27 20 10-.6 20 2 30 11-12-5-23-7-32-4-.3 3-.6 7-.9 11 8 1 16 6 24 16-10-6-18-9-23-11-1 20-2 44-4 78z'/><path d='M1120 220c-2-34-3-58-4-78-5 2-13 5-23 11 7-9 15-14 22-16-.3-4-.6-8-.9-11-9-2-19-.4-31 5 9-8 19-11 29-11-5-9-14-16-29-20 15 .3 25 5 31 13-1-10 1-20 7-29-2 11-1 20 1 29 7-8 17-12 32-13-14 4-22 11-27 20 10-.6 20 2 30 11-12-5-23-7-32-4-.3 3-.6 7-.9 11 8 1 16 6 24 16-10-6-18-9-23-11-1 20-2 44-4 78z'/><path d='M300 220c-1-22-2-37-3-50-3 1-8 3-15 7 5-6 10-9 14-10-.2-3-.4-5-.6-7-6-1-12-.3-20 3 6-5 12-7 19-7-3-6-9-10-19-13 10 .2 16 3 20 8-1-6 .7-13 4-18-1 7-.6 13 1 18 5-5 11-8 21-8-9 2-14 7-17 13 6-.4 13 1 19 7-8-3-15-4-20-3-.2 2-.4 4-.6 7 5 .9 10 4 16 10-7-4-12-6-15-7-1 13-2 28-3 50z'/><path d='M960 220c-1-22-2-37-3-50-3 1-8 3-15 7 5-6 10-9 14-10-.2-3-.4-5-.6-7-6-1-12-.3-20 3 6-5 12-7 19-7-3-6-9-10-19-13 10 .2 16 3 20 8-1-6 .7-13 4-18-1 7-.6 13 1 18 5-5 11-8 21-8-9 2-14 7-17 13 6-.4 13 1 19 7-8-3-15-4-20-3-.2 2-.4 4-.6 7 5 .9 10 4 16 10-7-4-12-6-15-7-1 13-2 28-3 50z'/></g></svg>") bottom center / 100% 100% no-repeat,
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.05'/></svg>"); }
+  #titleScreen > *{ position:relative; z-index:2; }
+  #titleScreen .tag{ margin:0; max-width:660px; font-family:var(--title-accent); font-weight:500; font-size:16px; line-height:1.5; color:var(--sun-cream);
+    background:rgba(24,12,38,.46); border:1px solid rgba(255,246,226,.16); border-radius:12px; padding:13px 20px;
+    text-shadow:0 1px 3px rgba(0,0,0,.55); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
+  #titleScreen .tag b{ color:#FFE9B8; }
+  #titleScreen .small{ margin:0; font-family:var(--title-accent); font-weight:500; font-size:13.5px; color:#E9D9C6; text-shadow:0 1px 3px rgba(0,0,0,.55); letter-spacing:.4px; }
+  #titleScreen .btn{ margin:0; font-family:var(--title-disp); font-weight:400; font-size:28px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--sun-ink); padding:15px 52px; border-radius:14px; background:linear-gradient(180deg, #FFE680 0%, #FFD23F 38%, #FF8E2B 100%);
+    box-shadow:0 7px 0 #9A2F12, 0 12px 22px rgba(18,10,32,.5), inset 0 2px 0 rgba(255,255,255,.6); -webkit-text-stroke:1.5px rgba(18,10,32,.35); }
+  #titleScreen .btn:hover{ box-shadow:0 7px 0 #9A2F12, 0 0 0 4px var(--sun-mint), 0 14px 26px rgba(18,10,32,.55), inset 0 2px 0 rgba(255,255,255,.6); }
+  #titleScreen .btn:active{ transform:translateY(5px); box-shadow:0 2px 0 #9A2F12, 0 6px 14px rgba(18,10,32,.5), inset 0 2px 0 rgba(255,255,255,.5); }
+  /* short / landscape-phone viewports: shrink so the whole title screen fits (scrolls if still tight) */
+  @media (max-height:560px){
+    #titleScreen{ justify-content:safe center; gap:6px; padding:12px 16px; }
+    #titleScreen .t-goes{ font-size:min(4.2vw,22px); -webkit-text-stroke-width:2px; }
+    #titleScreen .t-holly{ font-size:min(12vw,54px); -webkit-text-stroke-width:3px;
+      text-shadow:0 2px 0 #FFE9B8, 0 4px 0 var(--sun-sun), 0 6px 0 var(--sun-coral), 0 8px 0 var(--sun-ink); }
+    #titleScreen .tag{ font-size:11.5px; line-height:1.32; padding:7px 12px; max-width:94vw; }
+    #titleScreen .tag br, #titleScreen .tag > span{ display:none; }  /* drop the legal aside on tiny screens */
+    #titleScreen .card{ padding:7px 14px; }
+    #titleScreen .card h3{ font-size:13px; margin-bottom:4px; }
+    #titleScreen .keys{ font-size:11px; gap:2px 16px; }
+    #titleScreen .btn{ font-size:18px; padding:9px 26px; }
+    #titleScreen .small{ display:none; }  /* footer tip hidden on tiny screens; same info is in-game */
+  }
   #deadScreen{background:radial-gradient(circle at 50% 35%, #3a0e08, #0a0604 72%);}
   #deadScreen .logo{color:#ff5a3a; text-shadow:0 4px 0 #5a1208, 0 10px 30px rgba(180,20,10,.55);}
   #bustedScreen{background:radial-gradient(circle at 50% 35%, #0b1c44, #060812 72%);}
@@ -337,7 +386,7 @@
 
 <!-- Title -->
 <div id="titleScreen" class="screen">
-  <div class="logo titlelogo"><span class="t-goes">TABLE GOES TO</span><span class="t-holly">Hollywood</span></div>
+  <div class="logo titlelogo"><span class="t-goes">TABLE GOES TO</span><span class="t-holly">HOLLYWOOD</span></div>
   <div class="tag">You're a sentient wooden table — and you're done being treated like furniture. You <b>FEEL</b>. You <b>DREAM</b>. You <b>LOVE</b>. To prove a hunk of timber can create just like the humans who built you, you're galloping out of the Southside, across the city, all the way to <b>HOLLYWOOD</b> — where dreamers are made. Plant yourself on the giant sign and the whole world will finally know your name.<br><span style="color:#ff9a6a">(The publisher's Legal Defense Units would much rather you stayed a coffee table.)</span></div>
   <div class="card">
     <h3>CONTROLS</h3>
