@@ -1,5 +1,7 @@
 # Table Goes to Hollywood
 
+![Table Goes to Hollywood — a pixel-art wooden table galloping down an LA street toward the Hollywood sign](preview.png)
+
 A pixel-art browser game where you play a **sentient wooden table** galloping across a
 GTA‑style Los Angeles to plant yourself on the **HOLLYWOOD** sign — flipping SUVs,
 bowling over interns, and outrunning a parody AAA publisher's Legal Defense Units.
